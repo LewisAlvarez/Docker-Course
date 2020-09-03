@@ -5,7 +5,7 @@ FROM centos:7
 RUN yum install httpd -y
 
 #Para copiar archivos externos a nuestro dockerfile para que se ejecuten en el contenedor usamoos COPY
-COPY beryllium /var/www/html
+ADD startbootstrap-freelancer-master /var/www/html
 
 #Para que este corriendo en primer plano en la linea de comando
 CMD apachectl -DFOREGROUND
