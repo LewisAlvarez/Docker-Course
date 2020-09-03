@@ -4,8 +4,12 @@ FROM centos:7
 #Lo que va a ejecutar
 RUN yum install httpd -y
 
+#Para definir la ubicacion actual donde quiero trabajar usamos WORKDIR
+#Ahora cuando se realice el COPY no es necesario escribir la ruta, ya que con WORKDIR estipulamos la carpeta donde vamos a trabajar
+WORKDIR /var/www/html
+
 #Para copiar archivos externos a nuestro dockerfile para que se ejecuten en el contenedor usamoos COPY
-COPY startbootstrap-freelancer-master /var/www/html
+COPY startbootstrap-freelancer-master .
 
 #Variable de entorno con ENV, crear archivos directamente desde el dockerfile.
 #Su sisntaxis en ENV nombre de la variable y el contenido
