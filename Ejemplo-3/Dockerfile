@@ -18,7 +18,8 @@ EXPOSE 8080
 #Para que los datos al eliminarse un contenedor queden guardados o persistan en alguna direccion
 VOLUME /var/www/html
 
+#Otro copy, ahora para usar un script que se encuentra por fuera, para correr la linea CMD
+COPY run.sh /run.sh
+
 #Para que este corriendo en primer plano en la linea de comando
-CMD apachectl -DFOREGROUND
-
-
+CMD sh /run.sh
