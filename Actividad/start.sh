@@ -2,7 +2,7 @@
 
 #Start php proccess in background
 
-/etc/init.d/php7.1-fpm restart
+/etc/init.d/php7.2 restart
 
 #Start apache in foreground
-["/usr/sbin/apachectl","-DFOREGROUND"]
+["/usr/sbin/apache2ctl", "-DFOREGROUND"]

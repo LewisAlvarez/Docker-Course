@@ -1,17 +1,13 @@
-#Partimos de la imagen oficial de debian
-FROM debian:latest
+#Partimos de la imagen oficial de ubuntu
+FROM ubuntu:18.04
 
 #Instalamos apache y PHP 7.0
 
-RUN                                     \
-	apt update                   && \
-        apt install -y apache2    
-#        apt install -y curl wget gnupg2 ca-certificates lsb-release apt-transport-https &&/
-#        wget https://packages.sury.org/php/apt.gpg &&/
-#        apt-key add apt.gpg &&/
-#        echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php7.list &&/
-#        apt update &&/
-#        apt install -y php7.1 php7.1-cli php7.1-common
+RUN apt-get update
+RUN apt install -y apache2                                                                                                   
+RUN apt install -y php libapache2-mod-php                                                                                       
+# systemctl restart apache2                                                                                                
+
 
 #Copiamos el vhost a la ruta por defecto donde se ubica en nginx
 
@@ -24,16 +20,16 @@ RUN                                     \
 
 #Copiamos el script que inicializa los servicios a una carpta
 
-#COPY start.sh /start.sh
+COPY start.sh /start.sh
 
 #Asignamos permisos al script
 
-#RUN chmod +x /start.sh
+RUN chmod +x /start.sh
 
 #Ejecutamos
 
-#CMD /start.sh
+CMD /start.sh
 
-CMD ["/usr/sbin/apachectl","-DFOREGROUND"]
+#CMD ["/usr/sbin/apachectl","-DFOREGROUND"]
  
 
