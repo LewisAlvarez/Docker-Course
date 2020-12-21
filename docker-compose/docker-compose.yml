@@ -1,11 +1,18 @@
 version: '3'
 services:
-  web:
+  web1:
      container_name: my-web-container-name
      ports:
       - "8080:8080"
-     image: nginex:v4
-     volumes: 
-      - "vol2:/usr/share/nginex/html"
-volumes: 
-  vol2:
+     image: httpd
+     networks: 
+      - net-test
+  web2:
+    container_name: my-web-container-name-2
+    ports:
+    - "8081:8081"
+    image: httpd
+    networks: 
+      - net-test
+networks: 
+  net-test:
