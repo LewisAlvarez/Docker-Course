@@ -4,4 +4,8 @@ services:
      container_name: my-web-container-name
      ports:
       - "8080:8080"
-     image: nginex:v1
+     image: nginex:v4
+     volumes: 
+      - "vol2:/usr/share/nginex/html"
+volumes: 
+  vol2:
